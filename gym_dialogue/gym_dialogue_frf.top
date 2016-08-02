@@ -1,0 +1,12 @@
+topic: ~gym_dialogue()
+language: frf
+
+u: (["stopper la danse" "stop stop" "arrêt arrêt" "arrête le programme" "je veux quitter" "arrête l'application" "stop l'application"])
+    Vous aimez cela ? Vous voulez une autre danse ? $GymApp/stop=1
+    u1: ([oui "très bien" "pourquoi pas"])
+        $GymApp/danse = 1
+        
+    u1: ([non "je veux pas" "non merci"])
+        j'ai compris, peut-être à la prochaine fois
+        $onStopped = 1
+    

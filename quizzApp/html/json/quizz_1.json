@@ -1,0 +1,123 @@
+[
+	{
+		"question":"J'ai besoin d'appeler le SAMU pour une urgence médicale, je compose le ",
+		"reponse":[
+			"réponse a \\pau=1000\\ dix-sept",
+			"réponse b \\pau=1000\\ dix-huit",
+			"réponse c \\pau=1000\\ quinze"
+		],
+		"clazz":[
+			"faux",
+			"faux",
+			"vrai"
+		]
+	},{
+		"question":"J'ai un doute sur un collègue qui exercerait une pratique illégale au sein du département ",
+		"reponse":[
+			"réponse a \\pau=1000\\ Je lui envoie un mail lui disant que je l'ai démasqué et que je souhaite négocier avec lui",
+			"réponse b \\pau=1000\\ J'envoie un mail expliquant mes soupçons à ZZZ FRAUDES OF",
+			"réponse c \\pau=1000\\ J'envoie un mail à abuse@orange.fr"
+		],
+		"clazz":[
+			"faux",
+			"vrai",
+			"faux"
+		]
+	},{
+		"question":"Mon rendez-vous professionnel est arrivé, l'accueil m'appelle pour m'en informer",
+		"reponse":[
+			"réponse a \\pau=1000\\ Je descends à l'accueil et vais chercher personnellement la personne",
+			"réponse b \\pau=1000\\ Je demande à l'accueil de faire monter la personne",
+			"réponse c \\pau=1000\\ J'ai un collègue en bas dans le hall, je lui demande d'aller chercher la personne"
+		],
+		"clazz":[
+			"vrai",
+			"faux",
+			"faux"
+		]
+	},{
+		"question":"Je reçois un mail douteux sur ma boite mail personnelle",
+		"reponse":[
+			"réponse a \\pau=1000\\ Je réponds au mail en demandant à ce qu'il ne m'envoit plus de mail à l'avenir",
+			"réponse b \\pau=1000\\ Je transfère le mail à alerte.phishing@orange.com",
+			"réponse c \\pau=1000\\ Je transfère le mail à abuse@orange.fr"
+		],
+		"clazz":[
+			"faux",
+			"faux",
+			"vrai"
+		]
+	},{
+		"question":"je viens de recevoir un SMS avec un lien bizarre me demandant mon code confidentiel",
+		"reponse":[
+			"réponse a \\pau=1000\\ Je ne réponds pas et transmets le SMS au 33700",
+			"réponse b \\pau=1000\\ Je clique sur le lien pour voir de quoi il s'agit",
+			"réponse c \\pau=1000\\ Je transfère le SMS à un collègue afin qu'il clique sur le lien et voir ce qu'il se passe"
+		],
+		"clazz":[
+			"vrai",
+			"faux",
+			"faux"
+		]
+	},{
+		"question":"Je dois diffuser un mail dont l'information peut constituer un préjudice grave à Orange",
+		"reponse":[
+			"réponse a \\pau=1000\\ Je diffuse mon mail en \"Diffusion Secret Orange\"",
+			"réponse b \\pau=1000\\ Je diffuse mon mail en \"Diffusion Confidentiel Orange\"",
+			"réponse c \\pau=1000\\ Je diffuse mon mail en \"Diffusion Interne Orange\""
+		],
+		"clazz":[
+			"faux",
+			"vrai",
+			"faux"
+		]
+	},{
+		"question":"Quels sont les 4 niveaux de crises existants chez Orange ?",
+		"reponse":[
+			"réponse a \\pau=1000\\ Noire, grise, rouge, jaune",
+		 	"réponse b \\pau=1000\\ Noire, grise, orange, jaune",
+		 	"réponse c \\pau=1000\\ Noire, rouge, vert, bleu"
+		],
+		"clazz":[
+			"vrai",
+			"faux",
+			"faux"
+		]
+	},{
+		"question":"Quels sont les 3 risques RSE auxquels une entreprise peut porter atteinte ?",
+		"reponse":[
+			"réponse a \\pau=1000\\ La route, les ondes, les bâtiments", 
+			"réponse b \\pau=1000\\ L'eau, le sol, l'air",
+			"réponse c \\pau=1000\\ Les champs, les ruisseaux, les montagnes"
+		],
+		"clazz":[
+			"faux",
+			"vrai",
+			"faux"
+		]
+	},{
+		"question":"Quel est le service étant l'unique diffuseur des messages d'alerte-crise et de crise pour tout OF ?",
+		"reponse":[
+			"réponse a \\pau=1000\\ La DSOF (Direction de la Sécurité Orange France)",
+			"réponse b \\pau=1000\\ La Direction Juridique",
+			"réponse c \\pau=1000\\ Le CIO (Carrefour de l'information Orange)"
+		],
+		"clazz":[
+			"faux",
+			"faux",
+			"vrai"
+		]
+	},{
+		"question":"L'alarme se déclenche, une épaisse fumée noire arrive sur le plateau et très vite respirer devient difficile",
+		"reponse":[
+			"réponse a \\pau=1000\\ Je hurle \"au feu\" et cours pour évacuer le plateau",
+			"réponse b \\pau=1000\\ J'appelle le 18 et me baisse pour mieux respirer",
+			"réponse c \\pau=1000\\ J'appelle le 15 et je monte sur mon bureau pour respirer"
+		],
+		"clazz":[
+			"faux",
+			"vrai",
+			"faux"
+		]
+	}
+]

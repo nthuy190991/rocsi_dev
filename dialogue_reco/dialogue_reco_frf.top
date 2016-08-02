@@ -1,0 +1,34 @@
+topic: ~dialogue_reco()
+language: frf
+   
+u: (e:onStart)
+    $FacialRecognition/onStart = 1
+     
+u: (_[oui non])
+    $FacialRecognition/stt = $1
+    $FacialRecognition/startListening = 0
+    
+u: (_*)
+    $FacialRecognition/stt = $1
+    $FacialRecognition/startListening = 0
+    
+u: (e:onInput)
+    $FacialRecognition/name = $onInput
+
+    
+#u: ($Dialog/NotSpeaking5)
+#    $FacialRecognition/stt = "@"
+#    $FacialRecognition/startListening = 0
+
+
+u: (["stop stop" "arrête le programme" "je veux quitter" "arrête l'application" "stop l'application"])
+    Oui, je comprends, j'arrête ce programme
+    $onStopped = 1
+    
+u: (e:onQuit)
+    Voulez-vous vraiment quitter ?
+    u1: (oui)
+        Je reviens à l'accueil
+        $onStopped = 1
+    u1: (non)
+        $onRestart = 1

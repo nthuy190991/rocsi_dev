@@ -1,0 +1,18 @@
+topic: ~dialogue_telco()
+language: frf
+
+u: (e:onStart)
+    $Telco/onStart = 1
+    
+u: (_*)
+    $Telco/stt = $1
+#    Vous avez répondu $1
+    $Telco/startListening = 0
+    
+u: (["stop stop" "arrête le programme" "je veux quitter" "arrête l'application" "stop l'application"])
+    Oui, je comprends, j'arrête ce programme
+    $onStopped = 1
+    
+u: (e:onQuit)
+    Je reviens à l'accueil
+    $onStopped = 1

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package version="0.0.0" uuid="rocsi2016_dev-8d93d3">
+ <names>
+  <name lang="en_US">rocsi2016_dev</name>
+ </names>
+ <supportedLanguages>
+  <language>en_US</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>en_US</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="behavior_1">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <permissions/>
+  </behaviorContent>
+ </contents>
+ <services>
+  <service name="facereco" autorun="false" execStart="/usr/bin/python2 Recognition.py"/>
+  <service name="log_display" autorun="false" execStart="/usr/bin/python2 log_display/log.py"/>
+  <service name="banque" autorun="false" execStart="/usr/bin/python2 Banque.py"/>
+  <service name="telco" autorun="false" execStart="/usr/bin/python2 Telco.py"/>
+ </services>
+</package>

@@ -1,0 +1,8 @@
+topic: ~lance_prgm()
+language: frf
+
+u: ([Rocsi Pepper] [lance commence lancer commencer] {le} [programme "reco faciale" "reconnaissance faciale"])
+    $onOutput = 1
+
+u: (["C'est bon Rocsi" "C'est bien Rocsi"])
+    $onOutput = 1

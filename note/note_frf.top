@@ -1,0 +1,33 @@
+topic: ~note()
+language: frf
+
+u: (e:onStart)
+    Donnez-moi une note sur cinq, s'il vous plaît ?
+    
+    u1: (cinq)
+        ^rand["Merci beaucoup" "avec plaisir" "Haha, je suis très content" "je suis un champion"]
+        ^switchFocus(animations/Stand/Emotions/Positive/Winner_2)
+        
+    u1: (quatre)
+        ^rand["Haha, merci bien" "avec plaisir" "je suis assez content"]
+        ^switchFocus(animations/Stand/Emotions/Positive/Winner_1)
+        
+    u1: (trois)
+        ^rand["Ah bon, c'est dommage" "Argggghhhhh, je suis pas content"]
+        ^switchFocus(animations/Stand/Emotions/Neutral/Puzzled_1)
+        
+    u1: (deux)
+        ^rand["Excusez-moi, je vais le faire mieux à la prochaine fois" "c'est embarrassant, je vais le faire mieux à la prochaine fois"]
+        ^switchFocus(animations/Stand/Emotions/Negative/Disappointed_1)
+        
+    u1: (un)
+        ^rand["C'est pas vrai, je suis désolé" "je suis déçu, désolé"]
+        ^switchFocus(animations/Stand/Emotions/Negative/Frustrated_1)
+        
+    u1: (zéro)
+        ^rand["J'en suis vraiment désolé" "Je vous prie de bien vouloir m'excuser"]
+        ^switchFocus(animations/Stand/Emotions/Negative/Sad_1)
+        
+u: (["stop stop" "arrêt arrêt"])
+    Merci pour votre évaluation. Revenons au programme
+    $onStopped = 1

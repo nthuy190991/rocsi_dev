@@ -1,0 +1,53 @@
+topic: ~main()
+language: frf
+
+concept: (greeting)
+    ^rand["Bonjour, je me présente, je suis Rocsi." "Bonjour, je m'appelle Rocsi, enchanter." "Bonjour, bienvenue à l'Orange Campus, vous pouvez m'appeler Rocsi." "Bonjour, je m'appelle Rocsi, je suis heureux de pouvoir vous rencontrer."]
+    
+concept: (functionality)
+    Je peux faire de la reconnaissance faciale, faire des quiz, dialoguer avec vous, ou vous donner un cours de gym.\pau=500\ Quelle est votre souhait ?
+    
+u: (e:onStart)
+    ~greeting \pau=500\ ~functionality
+    
+    u1: ([répéter "tu peux répéter" "répète s'il te plaît" "redis-moi ça"])
+        ~greeting \pau=500\ ~functionality ^stayInScope
+    
+    u1: ([Lance Lancer Commence Commencer] {la} [reco reconnaissance] faciale)
+        $RocsiDev/facereco = 1
+        Juste une seconde, je lance la reconnaissance faciale
+        
+    u1: (Test)
+        $RocsiDev/facereco = 1
+        Juste une seconde, je lance la reconnaissance faciale
+        
+    u1: ("Tu me reconnais")
+        $RocsiDev/facereco = 1
+        Juste une seconde
+    
+    u1: ([Lance Lancer Commence Commencer] Quizz)
+        $RocsiDev/quizz = 1
+        Juste une seconde, je vais lancer le quiz
+        
+    u1: ([Lance Lancer Commence Commencer] {la} Dialogue)
+        $RocsiDev/dialogue = 1
+        
+    u1: ([Lance Lancer Commence Commencer] {la} Gym)
+        $RocsiDev/gym = 1
+        Juste une seconde, je vais vous montrer le Tai Chi Chuan
+        
+    u1: ([Lance Lancer Commence Commencer] {la} Banque)
+        $RocsiDev/bank = 1
+        Juste une seconde, je vais lancer l'application de la banque
+        
+    u1: ([Lance Lancer Commence Commencer] {la} Telco)
+        $RocsiDev/telco = 1
+        Juste une seconde, je vais lancer l'application d'accueil en boutique Orange
+        
+    u1: ({Je te donne} {une la ta} note)
+        $RocsiDev/note = 1
+        
+    u1: (["stop stop" "arrête le programme" "je veux quitter" "arrête l'application" "stop l'application"])
+        Merci de votre utilisation. Au revoir, à bientôt    
+        $onStopped = 1
+    
