@@ -135,13 +135,14 @@ class RecognitionApp(object):
             return responseYesOrNo
 
     def write_logchat(self, actor, text):
-        with open(self.log_filename, 'a') as f:
-            try:
+        try:
+            with open(self.log_filename, 'a') as f:
                 text = text.encode('ascii', 'xmlcharrefreplace')
                 f.write(actor + '\t: ' + text + '\n')
-            except UnicodeDecodeError as e:
-                self.logger.info("Error in write_logchat")
-                self.logger.error(e)
+            f.close()
+        except UnicodeDecodeError as e:
+            self.logger.info("Error in write_logchat")
+            self.logger.error(e)
 
     """
     Preparation for program
