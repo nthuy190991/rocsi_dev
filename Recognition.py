@@ -41,9 +41,11 @@ class RecognitionApp(object):
         self.tts = self.session.service('ALTextToSpeech')
         self.mem = self.session.service("ALMemory")
 
+        self.ip_robot               = "192.168.1.11"
+        self.app_id                 = "rocsi2016_dev-8d93d3"
+        self.formation_api_server   = '192.168.1.10:8080'
+
         # Train database, set up Parameters and NLC
-        self.ip_robot = "192.168.1.11"
-        self.app_id = "rocsi2016_dev-8d93d3"
         self.prepare()
 
     def speak(self, clientId, toSpeak):
@@ -142,6 +144,7 @@ class RecognitionApp(object):
                 text = text.encode('ascii', 'xmlcharrefreplace')
                 f.write(actor + '\t: ' + text + '\n')
             f.close()
+            time.sleep(0.1)
         except UnicodeDecodeError as e:
             self.logger.info("Error in write_logchat")
             self.logger.error(e)
@@ -481,7 +484,7 @@ class RecognitionApp(object):
         self.logger.info("url=" + url)
         status_code = 0
         try:
-            conn = httplib.HTTPConnection('192.168.1.10:8080') # API server address
+            conn = httplib.HTTPConnection(self.formation_api_server) # API server address
             conn.request("GET", url, "", headers)
             response = conn.getresponse()
             result = response.read()
@@ -572,6 +575,11 @@ class RecognitionApp(object):
             n_salle = res[24:27] #TODO: to be changed
             self.logger.info("Afficher la video pour le chemin a la salle " + n_salle)
             self.mem.raiseEvent('FacialRecognition/videoFormation', n_salle)
+
+            # Display video on log watch
+            url = '<center><video id="formVideo" controls="controls" width="300px" preload="auto" autoplay loop><source src="http://'+ self.ip_robot +'//apps/ocformationapp-e2d3ee/video/'+n_salle+'.mp4" type="video/mp4"></video></center>'
+            self.write_logchat('Bot', url)
+
         else: # la video sera arretee quand pepper repond a question suivante
             video_flag = False
             self.logger.info("Stopper la video pour le chemin")
@@ -712,7 +720,7 @@ class RecognitionApp(object):
 
         if os.path.exists(image_to_paths[0]):
             self.logger.info("Les fichiers avec le nom " + str(name) + " existent deja")
-            b = self.yes_or_no(clientId, "Les fichiers avec le nom " + str(name) + " existent deja, ecraser ces fichiers ?")
+            b = self.yes_or_no(clientId, "erase_photos")
             if (b==1):
                 self.logger.info("Ecraser les fichiers avec le nom " + str(name))
                 image_del_paths = [os.path.join(self.imgPath, f) for f in os.listdir(self.imgPath) if f.startswith(name)]
@@ -860,16 +868,17 @@ class RecognitionApp(object):
         # time.sleep(1)
         self.mem.raiseEvent('FacialRecognition/name2', name)
 
-        url = ''
-        image_to_paths = [str(name) + "." + str(j) + self.imgSuffix for j in range(self.nb_img_max)]
-        for img_path in image_to_paths:
-            alt  = str(name) + ' - Photos'
-            link = "http://" + self.ip_robot + "//apps/" + self.app_id + "/face_database_pepper/" + img_path
-            url = url + '&emsp;<img src="'+ link.replace(' ', '%20') + '" class="w3-border w3-padding-4 w3-padding-tiny" alt="'+ alt +'" style="width:128px;">'
+        if (name!=''):
+            url = ''
+            image_to_paths = [str(name) + "." + str(j) + self.imgSuffix for j in range(self.nb_img_max)]
+            for img_path in image_to_paths:
+                alt  = str(name) + ' - Photos'
+                link = "http://" + self.ip_robot + "//apps/" + self.app_id + "/face_database_pepper/" + img_path
+                url = url + '<img src="'+ link.replace(' ', '%20') + '?t=' + str(time.time()) +  '" class="w3-border w3-padding-4 w3-padding-tiny" alt="'+ alt +'" style="width:80px;">&emsp;'
 
-        # url = url + '&emsp;<a href=' + name.replace(' ', '%20') + '><img src="' + data + '" class="img-thumbnail" alt="photo"  style="width:128px;"></a>'
-        self.logger.info('show_photos: ' + url)
-        self.write_logchat('show_photos', url)
+            # url = url + '&emsp;<a href=' + name.replace(' ', '%20') + '><img src="' + data + '" class="img-thumbnail" alt="photo"  style="width:128px;"></a>'
+            self.logger.info('show_photos: ' + url)
+            self.write_logchat('Bot', url)
 
 
     """
