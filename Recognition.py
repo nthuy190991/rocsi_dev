@@ -42,6 +42,8 @@ class RecognitionApp(object):
         self.mem = self.session.service("ALMemory")
 
         # Train database, set up Parameters and NLC
+        self.ip_robot = "192.168.1.11"
+        self.app_id = "rocsi2016_dev-8d93d3"
         self.prepare()
 
     def speak(self, clientId, toSpeak):
@@ -857,6 +859,18 @@ class RecognitionApp(object):
         # self.mem.removeData('FacialRecognition/name2')
         # time.sleep(1)
         self.mem.raiseEvent('FacialRecognition/name2', name)
+
+        url = ''
+        image_to_paths = [str(name) + "." + str(j) + self.imgSuffix for j in range(self.nb_img_max)]
+        for img_path in image_to_paths:
+            alt  = str(name) + ' - Photos'
+            link = "http://" + self.ip_robot + "//apps/" + self.app_id + "/face_database_pepper/" + img_path
+            url = url + '&emsp;<img src="'+ link.replace(' ', '%20') + '" class="w3-border w3-padding-4 w3-padding-tiny" alt="'+ alt +'" style="width:128px;">'
+
+        # url = url + '&emsp;<a href=' + name.replace(' ', '%20') + '><img src="' + data + '" class="img-thumbnail" alt="photo"  style="width:128px;"></a>'
+        self.logger.info('show_photos: ' + url)
+        self.write_logchat('show_photos', url)
+
 
     """
     ==============================================================================

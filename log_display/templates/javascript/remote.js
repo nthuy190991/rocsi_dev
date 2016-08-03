@@ -38,6 +38,10 @@ function waitForServerInput() {
 					displayBotChat(txt);
 				}
 			}
+			else if (data.indexOf("show_photos") === 0){
+				var url = data.substring(14);
+				displayBotChat(url);
+			}
 		}
 	});
 }
